@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Product from './components/Product';
+import Cart from './components/Cart';
 
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
 
   ]);
 
+  // Shoping cart
+ 
+  const [cart, sumProduct] = useState([ ])
+
   // get date
   const date_now = new Date().getFullYear(); 
 
@@ -30,10 +35,18 @@ function App() {
       <h1>Escoge tus productos</h1>
       { products.map(product =>(
         <Product 
-        key = {product.id}
+          key = {product.id}
           product = {product}
+          cart = {cart}
+          products = {products}
+          sumProduct = {sumProduct}
         />
       ))}
+
+      <Cart 
+        cart = {cart}
+        sumProduct = {sumProduct}
+      />
 
       <Footer 
         date_now = {date_now}
